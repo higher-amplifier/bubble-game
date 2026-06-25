@@ -1,4 +1,4 @@
-# 🫧 Bubble Pop — *Khel Khatam*
+# 🫧 Bubble Pop - tests your focus
 
 > You see a number. You click the bubble. Simple, right?  
 > **WRONG.** The clock is eating your soul and your fingers can't keep up.
@@ -11,7 +11,7 @@
 
 | Gameplay | Game Over |
 |----------|-----------|
-| ![gameplay](./gameplay.png) | ![gameover](./gameover.png) |
+| ![gameplay](./gamePlay.jpeg) | ![gameover](./gameOver.jpeg) |
 
 ---
 
