@@ -11,7 +11,7 @@
 
 | Gameplay | Game Over |
 |----------|-----------|
-| ![gameplay](./gamePlay.jpeg) | ![gameover](./gameOver.jpeg) |
+| ![gameplay](./gameUI.jpeg) | ![gameover](./gameOver.jpeg) |
 
 ---
 
