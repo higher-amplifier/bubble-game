@@ -1,0 +1,217 @@
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "gilroy";
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+/* ================= MAIN ================= */
+#main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(155, 184, 155);
+}
+
+#panel {
+  width: 80%;
+  height: 80%;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* ================= TOP ================= */
+#ptop {
+  height: 100px;
+  padding: 0 30%;
+  background: rgb(72, 104, 72);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+}
+
+.elem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.elem h2 {
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.box {
+  font-size: 25px;
+  font-weight: 600;
+  padding: 10px 20px;
+  background: #fff;
+  color: rgb(18, 119, 57);
+  border-radius: 5px;
+}
+
+/* ================= PLAY AREA ================= */
+#pbtm {
+  position: relative; /* REQUIRED for sweep */
+  width: 100%;
+  height: calc(100% - 100px);
+  padding: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* ===== GAMEPLAY AMBIENT SHINY SWEEP ===== */
+#pbtm::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(180, 255, 230, 0.18) 50%,
+    transparent 70%
+  );
+
+  transform: translateX(-100%);
+  animation: ghostSweep 6s linear infinite;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ================= BUBBLES ================= */
+.bubble {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgb(72, 104, 72);
+  color: white;
+
+  position: relative;
+  z-index: 2; /* ABOVE sweep */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bubble:hover {
+  background: rgb(120, 75, 50);
+  cursor: pointer;
+}
+
+/* ================= GAME OVER (UNCHANGED) ================= */
+.game-over {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #05060a;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  color: #e9ecff;
+}
+
+/* 👻 GHOST BLOBS LAYER (AS BEFORE) */
+.game-over::before,
+.game-over::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: floatGhost 6s linear infinite;
+}
+
+.game-over::before {
+  background: rgba(120, 200, 255, 0.35);
+}
+
+.game-over::after {
+  background: rgba(200, 150, 255, 0.35);
+  animation-delay: -3s;
+}
+
+/* floating motion */
+@keyframes floatGhost {
+  0%   { transform: translate(-30%, -30%); }
+  50%  { transform: translate(80%, 40%); }
+  100% { transform: translate(-30%, -30%); }
+}
+
+/* keep content above ghosts */
+.game-over * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ================= TEXT ================= */
+.game-over h1 {
+  font-size: 56px;
+  letter-spacing: 5px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 25px rgba(150, 200, 255, 0.8);
+}
+
+.game-over h2 {
+  font-size: 28px;
+  margin-bottom: 30px;
+  color: #cfd6ff;
+}
+
+/* ================= BUTTON ================= */
+#restart {
+  padding: 16px 50px;
+  font-size: 22px;
+  font-weight: 600;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  backdrop-filter: blur(12px);
+  transition: 0.3s;
+}
+
+#restart:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 40px rgba(150, 200, 255, 0.9);
+}
+
+/* ================= ANIMATION ================= */
+@keyframes ghostSweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  15% { opacity: 1; }
+  85% { opacity: 1; }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
