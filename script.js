@@ -46,7 +46,7 @@ function runTimer(){
 
         document.querySelector("#pbtm").innerHTML = `
      <div class="game-over" style="text-align:center; width:100%;">
-        <h1>Tera Khel Khatam...</h1>
+        <h1>Game,over... Khel Khatam...</h1>
         <h2>Your Score: ${score}</h2>
         <button id="restart">Restart</button>
     </div>
